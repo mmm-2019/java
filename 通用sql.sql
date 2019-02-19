@@ -4,7 +4,7 @@ CREATE TABLE `test` (
   `ID` bigint(20) NOT NULL COMMENT '主键ID',
   `AddUser` bigint(20) NOT NULL COMMENT '创建人',
   `AddTime` datetime NOT NULL COMMENT '创建时间',
-  `AddUserName` varchar(50) NOT NULL  COMMENT '创建人人名称',
+  `AddUserName` varchar(50) NOT NULL  COMMENT '创建人名称',
   `ModifyUser` bigint(20) DEFAULT NULL COMMENT '修改人',
   `ModifyTime` datetime DEFAULT NULL COMMENT '修改时间',
   `ModifyUserName` varchar(50) DEFAULT NULL COMMENT '修改人名称',
