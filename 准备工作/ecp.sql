@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2019-02-20 14:43:21
+Date: 2019-02-20 15:02:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,7 +28,7 @@ CREATE TABLE `ecp_assets_info` (
   `DelFlag` smallint(6) DEFAULT '0' COMMENT '删除标识(0->正常 1->删除)',
   `UserID` bigint(20) DEFAULT NULL COMMENT '主账号ID',
   `AssetsType` smallint(6) DEFAULT NULL COMMENT '类型，次卡或年卡',
-  `Count` smallint(6) DEFAULT NULL COMMENT '剩余次数',
+  `SurplusCount` smallint(6) DEFAULT NULL COMMENT '剩余次数',
   `OpeningMonth` smallint(6) DEFAULT NULL COMMENT '开通月份',
   `BeginTime` datetime DEFAULT NULL COMMENT '年卡开始日期',
   `EndTime` datetime DEFAULT NULL COMMENT '年卡终止日期',
@@ -52,7 +52,7 @@ CREATE TABLE `ecp_assets_log_info` (
   `DelFlag` smallint(6) DEFAULT '0' COMMENT '删除标识(0->正常 1->删除)',
   `Type` smallint(6) DEFAULT NULL COMMENT '增加或支出',
   `AssetsType` smallint(6) DEFAULT NULL COMMENT '类型，次卡或年卡',
-  `Count` smallint(6) DEFAULT NULL COMMENT '剩余次数',
+  `Count` smallint(6) DEFAULT NULL COMMENT '次数',
   `OpeningMonth` smallint(6) DEFAULT NULL COMMENT '开通月份',
   `BeginTime` datetime DEFAULT NULL COMMENT '年卡开始日期',
   `EndTime` datetime DEFAULT NULL COMMENT '年卡终止日期',
