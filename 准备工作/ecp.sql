@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-02-20 20:26:35
+Date: 2019-02-21 21:33:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -68,6 +68,97 @@ CREATE TABLE `ecp_assets_log_info` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `ecp_billboard_info`
+-- ----------------------------
+DROP TABLE IF EXISTS `ecp_billboard_info`;
+CREATE TABLE `ecp_billboard_info` (
+  `ID` bigint(20) NOT NULL COMMENT '主键ID',
+  `AddUser` bigint(20) NOT NULL COMMENT '创建人',
+  `AddTime` datetime NOT NULL COMMENT '创建时间',
+  `ModifyUser` bigint(20) DEFAULT NULL COMMENT '修改人',
+  `ModifyTime` datetime DEFAULT NULL COMMENT '修改时间',
+  `DelFlag` smallint(6) DEFAULT '0' COMMENT '删除标识(0->正常 1->删除)',
+  `BillboardName` varchar(30) DEFAULT NULL COMMENT '公告名称',
+  `BillboardContent` text COMMENT '公告内容',
+  `FileName` varchar(100) DEFAULT NULL COMMENT '附件名称',
+  `FileUrl` varchar(300) DEFAULT NULL COMMENT '附件地址',
+  `BillboardStatus` smallint(6) DEFAULT NULL COMMENT '状态 1：待发布，2：已发布',
+  `ReleaseTime` datetime DEFAULT NULL COMMENT '发布时间',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='公告表';
+
+-- ----------------------------
+-- Records of ecp_billboard_info
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `ecp_emergency_environmental_events`
+-- ----------------------------
+DROP TABLE IF EXISTS `ecp_emergency_environmental_events`;
+CREATE TABLE `ecp_emergency_environmental_events` (
+  `ID` bigint(20) NOT NULL COMMENT '主键ID',
+  `AddUser` bigint(20) NOT NULL COMMENT '创建人',
+  `AddTime` datetime NOT NULL COMMENT '创建时间',
+  `ModifyUser` bigint(20) DEFAULT NULL COMMENT '修改人',
+  `ModifyTime` datetime DEFAULT NULL COMMENT '修改时间',
+  `DelFlag` smallint(6) DEFAULT '0' COMMENT '删除标识(0->正常 1->删除)',
+  `IndustryCategories` varchar(30) DEFAULT NULL COMMENT '行业类别及代码',
+  `HappenTime` varchar(30) DEFAULT NULL COMMENT '时间',
+  `HappenPlace` varchar(30) DEFAULT NULL COMMENT '地点',
+  `DeviceScale` varchar(300) DEFAULT NULL COMMENT '装置规模',
+  `Causes` text COMMENT '引发原因',
+  `MaterialLeakage` varchar(100) DEFAULT NULL COMMENT '物料泄露量',
+  `EmergencyMeasuresTaken` text COMMENT '采取的应急措施',
+  `EventImpact` text COMMENT '事件影响（影响范围，事件损失）',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='突发环境事件';
+
+-- ----------------------------
+-- Records of ecp_emergency_environmental_events
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `ecp_help_info`
+-- ----------------------------
+DROP TABLE IF EXISTS `ecp_help_info`;
+CREATE TABLE `ecp_help_info` (
+  `ID` bigint(20) NOT NULL COMMENT '主键ID',
+  `AddUser` bigint(20) NOT NULL COMMENT '创建人',
+  `AddTime` datetime NOT NULL COMMENT '创建时间',
+  `ModifyUser` bigint(20) DEFAULT NULL COMMENT '修改人',
+  `ModifyTime` datetime DEFAULT NULL COMMENT '修改时间',
+  `DelFlag` smallint(6) DEFAULT '0' COMMENT '删除标识(0->正常 1->删除)',
+  `HelpName` varchar(50) DEFAULT NULL COMMENT '文档名称',
+  `HelpTypeId` smallint(6) DEFAULT NULL COMMENT '类型ID',
+  `FileName` varchar(100) DEFAULT NULL COMMENT '资源名称',
+  `FileUrl` varchar(300) NOT NULL COMMENT '文件地址',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='帮助中心';
+
+-- ----------------------------
+-- Records of ecp_help_info
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `ecp_help_type`
+-- ----------------------------
+DROP TABLE IF EXISTS `ecp_help_type`;
+CREATE TABLE `ecp_help_type` (
+  `ID` bigint(20) NOT NULL COMMENT '主键ID',
+  `AddUser` bigint(20) NOT NULL COMMENT '创建人',
+  `AddTime` datetime NOT NULL COMMENT '创建时间',
+  `ModifyUser` bigint(20) DEFAULT NULL COMMENT '修改人',
+  `ModifyTime` datetime DEFAULT NULL COMMENT '修改时间',
+  `DelFlag` smallint(6) DEFAULT '0' COMMENT '删除标识(0->正常 1->删除)',
+  `TypeName` varchar(10) DEFAULT NULL COMMENT '单菜名称',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='公告类型';
+
+-- ----------------------------
+-- Records of ecp_help_type
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `ecp_login_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `ecp_login_info`;
@@ -85,6 +176,75 @@ CREATE TABLE `ecp_login_info` (
 
 -- ----------------------------
 -- Records of ecp_login_info
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `ecp_natural_environment`
+-- ----------------------------
+DROP TABLE IF EXISTS `ecp_natural_environment`;
+CREATE TABLE `ecp_natural_environment` (
+  `ID` bigint(20) NOT NULL COMMENT '主键ID',
+  `AddUser` bigint(20) NOT NULL COMMENT '创建人',
+  `AddTime` datetime NOT NULL COMMENT '创建时间',
+  `ModifyUser` bigint(20) DEFAULT NULL COMMENT '修改人',
+  `ModifyTime` datetime DEFAULT NULL COMMENT '修改时间',
+  `DelFlag` smallint(6) DEFAULT '0' COMMENT '删除标识(0->正常 1->删除)',
+  `Region` varchar(30) DEFAULT NULL COMMENT '地区',
+  `TopographicFeatures` text COMMENT '地形地貌',
+  `MeanTemperature` varchar(10) DEFAULT NULL COMMENT '年平均气温',
+  `MaximumTemperature` varchar(10) DEFAULT NULL COMMENT '年最高气温',
+  `MinimumTemperature` varchar(10) DEFAULT NULL COMMENT '年最低气温',
+  `MeanWindSpeed` varchar(10) DEFAULT NULL COMMENT '年平均风速',
+  `MaximumWindSpeed` varchar(10) DEFAULT NULL COMMENT '最大风速',
+  `AverageAtmosphericPressure` varchar(10) DEFAULT NULL COMMENT '年平均大气压',
+  `AveragePrecipitation` varchar(10) DEFAULT NULL COMMENT '年平均降水量',
+  `LongestDurationPrecipitation` varchar(10) DEFAULT NULL COMMENT '最长历时降水量',
+  `MaximumPrecipitation` varchar(10) DEFAULT NULL COMMENT '小时最大降水量',
+  `AverageThunderstormDays` varchar(10) DEFAULT NULL COMMENT '年平均暴雷日数',
+  `PrevailingWindDirection` varchar(10) DEFAULT NULL COMMENT '全年主导风向',
+  `WinterDominantWindDirection` varchar(10) DEFAULT NULL COMMENT '冬季主导风向',
+  `SummerPrevailingWindDirection` varchar(10) DEFAULT NULL COMMENT '夏季主导风向',
+  `NaturalDisaster` text COMMENT '历史上层发生过的极端天气情况和自然灾害情况',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='自然环境概况';
+
+-- ----------------------------
+-- Records of ecp_natural_environment
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `ecp_physicochemical_properties`
+-- ----------------------------
+DROP TABLE IF EXISTS `ecp_physicochemical_properties`;
+CREATE TABLE `ecp_physicochemical_properties` (
+  `ID` bigint(20) NOT NULL COMMENT '主键ID',
+  `AddUser` bigint(20) NOT NULL COMMENT '创建人',
+  `AddTime` datetime NOT NULL COMMENT '创建时间',
+  `ModifyUser` bigint(20) DEFAULT NULL COMMENT '修改人',
+  `ModifyTime` datetime DEFAULT NULL COMMENT '修改时间',
+  `DelFlag` smallint(6) DEFAULT '0' COMMENT '删除标识(0->正常 1->删除)',
+  `ChemicalsChinese` varchar(50) DEFAULT NULL COMMENT '化学品中文名称',
+  `ChemicalsEnglish` varchar(50) DEFAULT NULL COMMENT '化学品英文名称',
+  `ChemicalsChinese2` varchar(50) DEFAULT NULL COMMENT '化学品中文名称1',
+  `ChemicalsEnglish2` varchar(50) DEFAULT NULL COMMENT '化学品英文名称2',
+  `TechnicalInstructionsCode` varchar(50) DEFAULT NULL COMMENT '技术说明书编码',
+  `CasNo` varchar(50) DEFAULT NULL COMMENT 'CAS NO',
+  `MolecularFormula` varchar(50) DEFAULT NULL COMMENT '分子式',
+  `MolecularWeight` varchar(50) DEFAULT NULL COMMENT '分子量',
+  `HarmfulComponents` varchar(50) DEFAULT NULL COMMENT '有害物成分',
+  `HarmfulSubstanceContent` varchar(50) DEFAULT NULL COMMENT '有害物含量',
+  `HarmfulSubstanceCasNo` varchar(50) DEFAULT NULL COMMENT '有害物 CAS NO',
+  `RtecsNo` varchar(50) DEFAULT NULL COMMENT 'RTECS号',
+  `HazardIdentification` varchar(300) DEFAULT NULL COMMENT '危险性类别',
+  `InvasionPathway` varchar(300) DEFAULT NULL COMMENT '侵入途径',
+  `HealthHazard` text COMMENT '健康危害',
+  `EnvironmentalHazards` text COMMENT '环境危害',
+  `RiskOfExplosion` varchar(300) DEFAULT NULL COMMENT '燃爆危险',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='理化性质';
+
+-- ----------------------------
+-- Records of ecp_physicochemical_properties
 -- ----------------------------
 
 -- ----------------------------
@@ -113,6 +273,27 @@ CREATE TABLE `ecp_project_info` (
 
 -- ----------------------------
 -- Records of ecp_project_info
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `ecp_reference_info`
+-- ----------------------------
+DROP TABLE IF EXISTS `ecp_reference_info`;
+CREATE TABLE `ecp_reference_info` (
+  `ID` bigint(20) NOT NULL COMMENT '主键ID',
+  `AddUser` bigint(20) NOT NULL COMMENT '创建人',
+  `AddTime` datetime NOT NULL COMMENT '创建时间',
+  `ModifyUser` bigint(20) DEFAULT NULL COMMENT '修改人',
+  `ModifyTime` datetime DEFAULT NULL COMMENT '修改时间',
+  `DelFlag` smallint(6) DEFAULT '0' COMMENT '删除标识(0->正常 1->删除)',
+  `Schedule` varchar(30) DEFAULT NULL COMMENT '附表',
+  `FileName` varchar(30) DEFAULT NULL COMMENT '文件名称',
+  `Content` text COMMENT '内容',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='参照表';
+
+-- ----------------------------
+-- Records of ecp_reference_info
 -- ----------------------------
 
 -- ----------------------------
