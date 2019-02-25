@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-02-21 21:33:52
+Date: 2019-02-25 22:59:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -268,6 +268,9 @@ CREATE TABLE `ecp_project_info` (
   `City` varchar(30) DEFAULT NULL COMMENT '行政区域 市',
   `County` varchar(30) DEFAULT NULL COMMENT '行政区域 县',
   `Remark` varchar(100) DEFAULT NULL COMMENT '备注',
+  `CompanyID` bigint(20) DEFAULT NULL COMMENT '所属企业id',
+  `FinishTime` datetime DEFAULT NULL COMMENT '完成时间',
+  `Cycle` smallint(6) DEFAULT NULL COMMENT '项目周期',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='项目表';
 

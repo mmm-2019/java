@@ -1,0 +1,26 @@
+InputStream murl;
+		try {
+			murl = new URL(
+					"http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,h_200")
+							.openStream();
+			BufferedImage sourceImg;
+			sourceImg = ImageIO.read(murl);
+
+			System.out.println(sourceImg.getWidth()); // 源图宽度
+			System.out.println(sourceImg.getHeight()); // 源图高度
+
+			URL url = new URL(
+					"http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,h_200");
+			URLConnection connection = url.openConnection();
+			connection.setDoOutput(true);
+			BufferedImage image = ImageIO.read(connection.getInputStream());
+			int srcWidth = image.getWidth(); // 源图宽度
+			int srcHeight = image.getHeight(); // 源图高度
+
+			System.out.println("srcWidth = " + srcWidth);
+			System.out.println("srcHeight = " + srcHeight);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}

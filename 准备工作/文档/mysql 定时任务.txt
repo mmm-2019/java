@@ -1,0 +1,15 @@
+#查看定时策略是否开启
+show variables like '%event_sche%';
+#开启定时策略
+set global event_scheduler=1
+#查看定时任务
+SELECT * FROM information_schema.events; 
+#创建定时任务
+CREATE EVENT IF NOT EXISTS temp_event   
+    ON SCHEDULE EVERY 1 DAY STARTS DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 1 DAY), INTERVAL 1 HOUR)   
+    ON COMPLETION PRESERVE ENABLE   
+    DO update hzx_base_company_info set sortflag=sortflag+1   where id=1000000002
+#删除定时任务
+drop event temp_event;
+#关闭定时策略
+set global event_scheduler=0;
